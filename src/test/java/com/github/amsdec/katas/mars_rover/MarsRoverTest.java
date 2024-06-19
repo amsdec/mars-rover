@@ -1,9 +1,15 @@
-package com.focaltec.training.katas.mars_rover;
+package com.github.amsdec.katas.mars_rover;
 
 import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.github.amsdec.katas.mars_rover.InvalidCommandException;
+import com.github.amsdec.katas.mars_rover.Planet;
+import com.github.amsdec.katas.mars_rover.Position;
+import com.github.amsdec.katas.mars_rover.Rover;
+import com.github.amsdec.katas.mars_rover.RoverStatus;
 
 public class MarsRoverTest {
 

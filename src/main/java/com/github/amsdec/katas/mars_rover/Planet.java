@@ -1,4 +1,4 @@
-package com.focaltec.training.katas.mars_rover;
+package com.github.amsdec.katas.mars_rover;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.focaltec.training.katas.mars_rover;
+package com.github.amsdec.katas.mars_rover;
 
 public interface Command {
 
