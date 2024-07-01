@@ -5,12 +5,6 @@ import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.github.amsdec.katas.mars_rover.InvalidCommandException;
-import com.github.amsdec.katas.mars_rover.Planet;
-import com.github.amsdec.katas.mars_rover.Position;
-import com.github.amsdec.katas.mars_rover.Rover;
-import com.github.amsdec.katas.mars_rover.RoverStatus;
-
 public class MarsRoverTest {
 
     @Test(expected = InvalidCommandException.class)
@@ -278,5 +272,14 @@ public class MarsRoverTest {
         final RoverStatus status = rover.execute("MMMMMM");
 
         Assert.assertEquals(new RoverStatus(new Position(0, 4), "N"), status);
+    }
+
+    @Test
+    public void navegarEnPlanetaJulio() {
+        final Rover rover = new Rover(new RoverStatus(new Position(0, 0), "N"),
+                new Planet(10, 10, Arrays.asList(new Position(1, 1))));
+        final RoverStatus status = rover.execute("MMMMMRMLMMMMMMM");
+
+        Assert.assertEquals(new RoverStatus(new Position(1, 0), "N"), status);
     }
 }
