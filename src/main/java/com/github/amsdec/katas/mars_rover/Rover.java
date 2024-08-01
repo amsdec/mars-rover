@@ -6,15 +6,18 @@ public class Rover {
 
     private final Planet planet;
 
+    private final CommandFactory commandFactory;
+
     public Rover(final RoverStatus status, final Planet planet) {
         this.status = status;
         this.planet = planet;
+        this.commandFactory = new CommandFactory();
     }
 
     public RoverStatus execute(final String commandsString) {
         try {
             for (final char c : commandsString.toCharArray()) {
-                Command command = CommandFactory.get(this.status, this.planet, c);
+                final Command command = this.commandFactory.get(this.status, this.planet, c);
                 this.status = command.execute();
             }
         } catch (final ObstacleFoundException e) {

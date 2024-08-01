@@ -1,13 +1,14 @@
 package com.github.amsdec.katas.mars_rover;
 
-import lombok.AllArgsConstructor;
+import lombok.Setter;
 
-@AllArgsConstructor
 public class MoveCommand implements Command {
 
-    private final RoverStatus status;
+    @Setter
+    private RoverStatus status;
 
-    private final Planet planet;
+    @Setter
+    private Planet planet;
 
     @Override
     public RoverStatus execute() {
@@ -40,6 +41,11 @@ public class MoveCommand implements Command {
         if (this.planet.hasObstacleAt(nextPosition)) {
             throw new ObstacleFoundException();
         }
+    }
+
+    @Override
+    public CommandPrototype cloneCommand() {
+        return new MoveCommand();
     }
 
 }

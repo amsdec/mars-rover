@@ -1,19 +1,34 @@
 package com.github.amsdec.katas.mars_rover;
 
-public final class CommandFactory {
+public class CommandFactory {
 
-    private CommandFactory() {
+    private final Command turnLeftCommand;
 
+    private final Command turnRightCommand;
+
+    private final Command moveCommand;
+
+    public CommandFactory() {
+        this.turnLeftCommand = new TurnLeftCommand();
+        this.turnRightCommand = new TurnRightCommand();
+        this.moveCommand = new MoveCommand();
     }
 
-    public static Command get(final RoverStatus status, final Planet planet, final char command) {
+    public Command get(final RoverStatus status, final Planet planet, final char command) {
         switch (command) {
             case 'L':
-                return new TurnLeftCommand(status);
+                final CommandPrototype turnLeft = this.turnLeftCommand.cloneCommand();
+                ((TurnLeftCommand) turnLeft).setStatus(status);
+                return (Command) turnLeft;
             case 'R':
-                return new TurnRightCommand(status);
+                final CommandPrototype turnRight = this.turnRightCommand.cloneCommand();
+                ((TurnRightCommand) turnRight).setStatus(status);
+                return (Command) turnRight;
             case 'M':
-                return new MoveCommand(status, planet);
+                final CommandPrototype move = this.moveCommand.cloneCommand();
+                ((MoveCommand) move).setStatus(status);
+                ((MoveCommand) move).setPlanet(planet);
+                return (Command) move;
             default:
                 throw new InvalidCommandException(String.format("Invalid command %s", command));
         }

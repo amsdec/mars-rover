@@ -1,11 +1,11 @@
 package com.github.amsdec.katas.mars_rover;
 
-import lombok.AllArgsConstructor;
+import lombok.Setter;
 
-@AllArgsConstructor
 public class TurnLeftCommand implements Command {
 
-    private final RoverStatus status;
+    @Setter
+    private RoverStatus status;
 
     @Override
     public RoverStatus execute() {
@@ -23,5 +23,10 @@ public class TurnLeftCommand implements Command {
             nextOrientation = "S";
         }
         return new RoverStatus(this.status.getPosition(), nextOrientation);
+    }
+
+    @Override
+    public CommandPrototype cloneCommand() {
+        return new TurnLeftCommand();
     }
 }
