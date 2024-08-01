@@ -1,23 +1,20 @@
 package com.github.amsdec.katas.mars_rover;
 
-public class Rover {
+public abstract class Rover {
 
     private RoverStatus status;
 
     private final Planet planet;
 
-    private final CommandFactory commandFactory;
-
-    public Rover(final RoverStatus status, final Planet planet, final CommandFactory commandFactory) {
+    protected Rover(final RoverStatus status, final Planet planet) {
         this.status = status;
         this.planet = planet;
-        this.commandFactory = commandFactory;
     }
 
     public RoverStatus execute(final String commandsString) {
         try {
             for (final char c : commandsString.toCharArray()) {
-                final Command command = this.commandFactory.make(this.status, this.planet, c);
+                final Command command = this.make(this.status, this.planet, c);
                 this.status = command.execute();
             }
         } catch (final ObstacleFoundException e) {
@@ -26,5 +23,7 @@ public class Rover {
 
         return this.status;
     }
+
+    protected abstract Command make(final RoverStatus status, final Planet planet, final char command);
 
 }

@@ -1,15 +1,19 @@
 package com.github.amsdec.katas.mars_rover.es;
 
 import com.github.amsdec.katas.mars_rover.Command;
-import com.github.amsdec.katas.mars_rover.CommandFactory;
 import com.github.amsdec.katas.mars_rover.InvalidCommandException;
 import com.github.amsdec.katas.mars_rover.Planet;
+import com.github.amsdec.katas.mars_rover.Rover;
 import com.github.amsdec.katas.mars_rover.RoverStatus;
 
-public class EsCommandFactory implements CommandFactory {
+public class EsRover extends Rover {
+
+    public EsRover(final RoverStatus status, final Planet planet) {
+        super(status, planet);
+    }
 
     @Override
-    public Command make(final RoverStatus status, final Planet planet, final char command) {
+    protected Command make(final RoverStatus status, final Planet planet, final char command) {
         switch (command) {
             case 'I':
                 return new EsTurnLeftCommand(status);
