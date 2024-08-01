@@ -1,9 +1,15 @@
-package com.github.amsdec.katas.mars_rover;
+package com.github.amsdec.katas.mars_rover.en;
+
+import com.github.amsdec.katas.mars_rover.Command;
+import com.github.amsdec.katas.mars_rover.ObstacleFoundException;
+import com.github.amsdec.katas.mars_rover.Planet;
+import com.github.amsdec.katas.mars_rover.Position;
+import com.github.amsdec.katas.mars_rover.RoverStatus;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class MoveCommand implements Command {
+public class EnMoveCommand implements Command {
 
     private final RoverStatus status;
 

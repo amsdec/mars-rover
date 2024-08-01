@@ -1,9 +1,12 @@
-package com.github.amsdec.katas.mars_rover;
+package com.github.amsdec.katas.mars_rover.en;
+
+import com.github.amsdec.katas.mars_rover.Command;
+import com.github.amsdec.katas.mars_rover.RoverStatus;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class TurnRightCommand implements Command {
+public class EnTurnRightCommand implements Command {
 
     private final RoverStatus status;
 
